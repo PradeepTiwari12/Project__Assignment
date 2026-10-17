@@ -3,10 +3,12 @@ Sprout 2.0 — Inclusive Micro-Investing Platform
 This repository contains the complete frontend code and interactive prototype for Sprout 2.0, a mobile-first investing platform designed for first-time investors in India starting from ₹100.   
 
 How to Run Locally
+
 Ensure all four files (index.html, styles.css, i1.js, and app.js) are saved in the exact same directory.
 Open index.html directly in any modern web browser (Chrome, Safari, Edge, Firefox), or launch it via a local development tool like VS Code Live Server.
 
 How the Design Solves the Brief & Stakeholder Conflicts
+
 This implementation resolves competing stakeholder mandates and addresses key user drop-off bottlenecks identified in the product brief:
 
 CEO vs. Marketing (The Mascot Conflict): To address executive concerns regarding financial trustworthiness without sacrificing Marketing's engagement goals, we introduced "Ankur" (The Geometric Seed)—an abstract, Apple-inspired minimal SVG botanical symbol styled with clean CSS gradients and golden-ratio geometry. It evolves progressively across the 5 onboarding screens, giving Marketing a memorable visual hook while preserving professional credibility. 
