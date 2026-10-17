@@ -1,4 +1,5 @@
 Sprout 2.0 — Inclusive Micro-Investing Platform
+
 This repository contains the complete frontend code and interactive prototype for Sprout 2.0, a mobile-first investing platform designed for first-time investors in India starting from ₹100.   
 
 How to Run Locally
