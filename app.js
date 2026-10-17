@@ -125,6 +125,7 @@ function toggleLanguage() {
 }
 
 // View Switcher (Both / Web Only / App Only)
+
 function setViewMode(mode) {
   const mainEl = document.getElementById('mainLayout');
   mainEl.classList.remove('view-only-web', 'view-only-app');
