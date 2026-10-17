@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ==========================================================================
+     SEGMENT 3: HTML DOM STRUCTURE (HOMEPAGE + ONBOARDING SHELL + COMPLIANCE)
+     ========================================================================== -->
+<header>
+  <div class="nav-container">
+    <a href="#" class="brand-logo" aria-label="Sprout 2.0 Home">
+      <svg width="28" height="28" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="16" stroke="#0F6E46" stroke-width="2.5"/>
+        <path d="M18 28V14C18 10 22 8 26 8C26 12 24 16 18 16" stroke="#0F6E46" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M18 22C18 18 14 15 10 15C10 19 12 22 18 22Z" fill="#0F6E46"/>
+      </svg>
+      <span>Sprout <small style="font-weight:500; color:var(--text-secondary); font-size:0.85rem;">2.0</small></span>
+    </a>
+
+    <div class="nav-controls">
+      <div class="mode-switcher" role="tablist">
+        <button class="mode-btn active" id="viewBothBtn" onclick="setViewMode('both')" data-i18n="nav_split">Connected Journey</button>
+        <button class="mode-btn" id="viewWebBtn" onclick="setViewMode('web')" data-i18n="nav_web">Homepage Only</button>
+        <button class="mode-btn" id="viewAppBtn" onclick="setViewMode('app')" data-i18n="nav_app">App Onboarding (5)</button>
+      </div>
+      <button class="lang-btn" onclick="toggleLanguage()" id="langToggleBtn">
+        <span>🌐</span>
+        <span id="langLabel">हिन्दी में देखें</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Marketing Ticker -->
+<div class="ticker-wrap" aria-label="Community Activity Pulse">
+  <div class="ticker-track">
+    <span class="ticker-item" data-i18n="ticker_1">🌱 <strong>1,420 first-time investors</strong> started with ₹100 today</span>
+    <span class="ticker-item" data-i18n="ticker_2">⚡ <strong>Avg. KYC Verification:</strong> 48 seconds with PAN + Aadhaar OTP</span>
+    <span class="ticker-item" data-i18n="ticker_3">📊 <strong>Nifty 50 Index Fund:</strong> Start a micro-SIP from ₹100/month</span>
+    <span class="ticker-item" data-i18n="ticker_4">🔒 <strong>SEBI Registered:</strong> Bank-grade 256-bit encryption</span>
+    <span class="ticker-item" data-i18n="ticker_1">🌱 <strong>1,420 first-time investors</strong> started with ₹100 today</span>
+  </div>
+</div>
+
+<main id="mainLayout" class="split-layout">
+  <!-- LEFT: HOMEPAGE -->
+  <section class="web-column" aria-label="Sprout Homepage">
+    <div class="hero-badge" data-i18n="hero_badge">
+      ✨ Built for India's First-Time Investors • Ultra-Lite (<25 KB)
+    </div>
+    <h1 class="hero-title" data-i18n="hero_title">
+      Investing doesn’t have to feel scary. Start with just ₹100.
+    </h1>
+    <p class="hero-subtitle" data-i18n="hero_subtitle">
+      No jargon, no hidden steps, and no heavy charts. Meet Ankur—your calm guide from your very first ₹100 mutual fund step to long-term wealth habits.
+    </p>
+
+    <div class="cta-group">
+      <button class="btn-primary" onclick="startOnboardingFromHero()" data-i18n="hero_cta_primary">Start with ₹100 Now →</button>
+      <button class="btn-secondary" onclick="jumpToStep(2)" data-i18n="hero_cta_secondary">See 2-Doc KYC Checklist</button>
+    </div>
+
+    <!-- ₹100 Habit Calculator -->
+    <div class="card">
+      <div class="card-header">
+        <span style="font-weight:700;" data-i18n="calc_title">See how a small monthly habit grows</span>
+        <span class="amount-pill" id="sipAmountDisplay">₹100 / mo</span>
+      </div>
+      <label for="sipSlider" style="font-size:0.85rem; color:var(--text-secondary);" data-i18n="calc_slider_label">
+        Slide to adjust monthly investment (₹100 to ₹2,000):
+      </label>
+      <input type="range" id="sipSlider" class="range-slider" min="100" max="2000" step="100" value="100" oninput="updateCalculator(this.value)" />
+      <div class="calc-grid">
+        <div>
+          <div style="font-size:0.8rem; color:var(--text-secondary);" data-i18n="calc_invested_label">Total Put In (5 Years)</div>
+          <div class="calc-stat-value" id="totalInvestedVal">₹6,000</div>
+        </div>
+        <div>
+          <div style="font-size:0.8rem; color:var(--text-secondary);" data-i18n="calc_projected_label">Illustrative Value (@12% p.a.*)</div>
+          <div class="calc-stat-value" style="color:var(--brand-primary);" id="projectedVal">₹8,249</div>
+        </div>
+      </div>
+      <p style="font-size:0.75rem; color:var(--text-secondary); margin-top:0.65rem;" data-i18n="calc_footnote">
+        *Illustrative projection for education only. Mutual fund returns depend on market performance and are not fixed.
+      </p>
+    </div>
+
+    <!-- Upfront KYC Prep Checklist -->
+    <div class="card">
+      <h2 style="font-size:1.1rem; font-weight:700;" data-i18n="prep_heading">Ready in 3 simple steps (No surprises)</h2>
+      <p style="font-size:0.9rem; color:var(--text-secondary);" data-i18n="prep_subheading">
+        We tell you exactly what you need upfront so you never get stuck mid-way.
+      </p>
+      <div class="prep-grid">
+        <div class="prep-item">
+          <div class="prep-icon">1</div>
+          <div>
+            <strong style="display:block; font-size:0.95rem;" data-i18n="prep_1_title">Keep PAN Card Ready</strong>
+            <span style="font-size:0.82rem; color:var(--text-secondary);" data-i18n="prep_1_desc">Required by SEBI to verify your tax identity.</span>
+          </div>
+        </div>
+        <div class="prep-item">
+          <div class="prep-icon">2</div>
+          <div>
+            <strong style="display:block; font-size:0.95rem;" data-i18n="prep_2_title">Aadhaar-Linked Mobile</strong>
+            <span style="font-size:0.82rem; color:var(--text-secondary);" data-i18n="prep_2_desc">For a quick 6-digit DigiLocker OTP verification.</span>
+          </div>
+        </div>
+        <div class="prep-item">
+          <div class="prep-icon">3</div>
+          <div>
+            <strong style="display:block; font-size:0.95rem;" data-i18n="prep_3_title">₹100 via Any UPI App</strong>
+            <span style="font-size:0.82rem; color:var(--text-secondary);" data-i18n="prep_3_desc">Invest at your own pace. Pause or withdraw anytime.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Referral Banner -->
+    <div class="referral-banner">
+      <div>
+        <strong style="font-size:1.05rem; display:block; margin-bottom:4px;" data-i18n="ref_title">🌱 Grow Together: Invite a friend to Sprout</strong>
+        <p style="font-size:0.9rem; color:#D5E2DA;" data-i18n="ref_desc">Share your calm investing journey. Track referrals inside the app after your first ₹100 investment.</p>
+      </div>
+      <button class="btn-secondary" onclick="copyReferralLink()" id="refBtn" data-i18n="ref_btn">Copy Invite Link</button>
+    </div>
+  </section>
+
+  <!-- RIGHT: 5-SCREEN ONBOARDING SIMULATOR -->
+  <aside class="onboarding-column" aria-label="Interactive 5-Screen App Onboarding">
+    <div class="phone-frame">
+      <div class="phone-statusbar">
+        <span>Sprout 2.0 Lite</span>
+        <span>4G • 98% 🔋</span>
+      </div>
+      <div class="progress-header">
+        <div class="step-pills" id="stepPills">
+          <div class="step-pill active"></div>
+          <div class="step-pill"></div>
+          <div class="step-pill"></div>
+          <div class="step-pill"></div>
+          <div class="step-pill"></div>
+        </div>
+        <div class="step-meta">
+          <span id="stepCounterText">SCREEN 1 OF 5</span>
+          <span id="stageLabelText" style="color:var(--brand-primary);">Seed Stage</span>
+        </div>
+      </div>
+
+      <div class="screen-body">
+        <div>
+          <div class="mascot-stage">
+            <div id="mascotSvgContainer" aria-hidden="true"></div>
+            <div>
+              <span style="font-size:0.72rem; font-weight:800; color:var(--brand-primary);">ANKUR • YOUR GUIDE</span>
+              <p style="font-size:0.9rem; font-weight:500;" id="mascotSpeechText"></p>
+            </div>
+          </div>
+          <div id="screenContentArea"></div>
+        </div>
+        <div class="screen-nav">
+          <button class="btn-secondary" id="prevStepBtn" onclick="changeStep(-1)" style="padding:0 16px;">←</button>
+          <button class="btn-primary" id="nextStepBtn" onclick="changeStep(1)">Continue →</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<!-- Mandatory Sticky Compliance Footer -->
+<footer class="compliance-footer" role="contentinfo">
+  <div class="compliance-inner">
+    <span class="compliance-badge">SEBI REGULATORY NOTICE</span>
+    <p data-i18n="compliance_text">
+      Mutual Fund investments are subject to market risks, read all scheme related documents carefully before investing. Past performance does not indicate future returns. Capital is at risk.
+    </p>
+  </div>
+</footer>
+<script src="index.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
